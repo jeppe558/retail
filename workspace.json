@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "retail": "apps/retail",
+    "retail-e2e": "apps/retail-e2e",
+    "util-api-client-middlewares": "libs/util-api-client-middlewares"
+  }
+}

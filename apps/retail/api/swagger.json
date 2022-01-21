@@ -1,0 +1,1397 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Retail",
+    "version": "retail"
+  },
+  "paths": {
+    "/retail/charges": {
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailChargePost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailChargePostRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailChargePostRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailChargePostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReepayPaymentSessionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReepayPaymentSessionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReepayPaymentSessionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/retail/items": {
+      "delete": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailItemDelete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemDeleteRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemDeleteRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemDeleteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailItemPost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPostRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPostRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailItemPut",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPutRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPutRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/retail/items/{itemId}": {
+      "get": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailItemGet",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailItemGetResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailItemGetResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailItemGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/retail/items/by-ids": {
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailItemsGet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemsGetRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemsGetRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailItemsGetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RetailItemsGetResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RetailItemsGetResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RetailItemsGetResponse"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/retail/transactions": {
+      "get": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailTransactionGet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionGetRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionGetRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionGetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailTransactionGetResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailTransactionGetResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailTransactionGetResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailTransactionPost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionPostRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionPostRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailTransactionPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/retail/transactions/{transactionId}/cancel": {
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailCancelTransactionPost",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailCancelTransactionPostRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailCancelTransactionPostRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailCancelTransactionPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/retail/transactions/{transactionId}/complete": {
+      "post": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailCompleteTransactionPost",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/retail/users": {
+      "get": {
+        "tags": [
+          "retail"
+        ],
+        "operationId": "retailUserGet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailUserGetRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailUserGetRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetailUserGetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailUserGetResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailUserGetResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetailUserGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Condition": {
+        "enum": [
+          "new",
+          "used",
+          "broken",
+          "brandNew"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Condition",
+          "modelAsString": false
+        }
+      },
+      "Countries": {
+        "enum": [
+          "dk",
+          "fo",
+          "se",
+          "nl",
+          "gb",
+          "ca",
+          "pl",
+          "is"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Countries",
+          "modelAsString": false
+        }
+      },
+      "Gender": {
+        "enum": [
+          "unisex",
+          "male",
+          "female"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Gender",
+          "modelAsString": false
+        }
+      },
+      "ItemCategory": {
+        "enum": [
+          "shoes",
+          "clothes",
+          "toys",
+          "gear",
+          "furniture",
+          "garden",
+          "bikes",
+          "booksAndMedia",
+          "maternity",
+          "misc",
+          "accessories",
+          "interior"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ItemCategory",
+          "modelAsString": false
+        }
+      },
+      "ItemSegment": {
+        "enum": [
+          "kids",
+          "women",
+          "home"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ItemSegment",
+          "modelAsString": false
+        }
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReepayPaymentSessionResponse": {
+        "required": [
+          "sessionId"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "cardId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "RetailCancelTransactionPostRequest": {
+        "required": [
+          "transactionId"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailChargePostRequest": {
+        "required": [
+          "country",
+          "paymentMethod",
+          "transactionId"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string"
+          },
+          "country": {
+            "$ref": "#/components/schemas/Countries"
+          },
+          "paymentMethod": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailItemDeleteRequest": {
+        "required": [
+          "itemId"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailItemGetResponse": {
+        "required": [
+          "brandOrTitle",
+          "category",
+          "condition",
+          "description",
+          "id",
+          "priceInHundreds",
+          "quantityInStock",
+          "segment"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "brandOrTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priceInHundreds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ItemCategory"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/Condition"
+          },
+          "segment": {
+            "$ref": "#/components/schemas/ItemSegment"
+          },
+          "quantityInStock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "extendedDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender"
+          },
+          "storageTags": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      },
+      "RetailItemPostRequest": {
+        "required": [
+          "brandOrTitle",
+          "category",
+          "condition",
+          "description",
+          "priceInHundreds",
+          "quantityInStock",
+          "segment"
+        ],
+        "type": "object",
+        "properties": {
+          "brandOrTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priceInHundreds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ItemCategory"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/Condition"
+          },
+          "segment": {
+            "$ref": "#/components/schemas/ItemSegment"
+          },
+          "quantityInStock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "extendedDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender"
+          },
+          "storageTags": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      },
+      "RetailItemPutRequest": {
+        "required": [
+          "brandOrTitle",
+          "category",
+          "condition",
+          "description",
+          "itemId",
+          "priceInHundreds",
+          "quantityInStock",
+          "segment"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "brandOrTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priceInHundreds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ItemCategory"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/Condition"
+          },
+          "segment": {
+            "$ref": "#/components/schemas/ItemSegment"
+          },
+          "quantityInStock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "extendedDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender"
+          },
+          "storageTags": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      },
+      "RetailItemsGetRequest": {
+        "required": [
+          "itemIds"
+        ],
+        "type": "object",
+        "properties": {
+          "itemIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RetailItemsGetResponse": {
+        "required": [
+          "brandOrTitle",
+          "category",
+          "condition",
+          "description",
+          "id",
+          "priceInHundreds",
+          "quantityInStock",
+          "segment"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "brandOrTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priceInHundreds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ItemCategory"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/Condition"
+          },
+          "segment": {
+            "$ref": "#/components/schemas/ItemSegment"
+          },
+          "quantityInStock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "extendedDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender"
+          },
+          "storageTags": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      },
+      "RetailTransactionDetailsGetResponse": {
+        "required": [
+          "payment"
+        ],
+        "type": "object",
+        "properties": {
+          "payment": {
+            "$ref": "#/components/schemas/RetailTransactionPaymentDetailsGetResponse"
+          }
+        }
+      },
+      "RetailTransactionGetRequest": {
+        "required": [
+          "transactionId"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailTransactionGetResponse": {
+        "required": [
+          "buyerId",
+          "buyerName",
+          "createdUtc",
+          "details",
+          "id",
+          "items",
+          "sellerId",
+          "sellerName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "buyerId": {
+            "type": "string"
+          },
+          "buyerName": {
+            "type": "string"
+          },
+          "sellerId": {
+            "type": "string"
+          },
+          "sellerName": {
+            "type": "string"
+          },
+          "details": {
+            "$ref": "#/components/schemas/RetailTransactionDetailsGetResponse"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RetailTransactiontemSnapshotGetResponse"
+            }
+          },
+          "createdUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "RetailTransactionImageGetResponse": {
+        "required": [
+          "fileId",
+          "height",
+          "timeUploaded",
+          "url",
+          "width"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "fileId": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeUploaded": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "blurHash": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "RetailTransactionPaymentDetailsGetResponse": {
+        "required": [
+          "reepayInvoiceHandle",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reepayInvoiceHandle": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailTransactionPostRequest": {
+        "required": [
+          "itemIds",
+          "retailStoreId"
+        ],
+        "type": "object",
+        "properties": {
+          "retailStoreId": {
+            "type": "string"
+          },
+          "itemIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RetailTransactiontemSnapshotGetResponse": {
+        "required": [
+          "brandOrTitle",
+          "description",
+          "image",
+          "itemId",
+          "priceInHundreds"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priceInHundreds": {
+            "type": "string"
+          },
+          "image": {
+            "$ref": "#/components/schemas/RetailTransactionImageGetResponse"
+          },
+          "brandOrTitle": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundedAtUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "RetailUserGetRequest": {
+        "required": [
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "RetailUserGetResponse": {
+        "required": [
+          "firstName",
+          "id",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

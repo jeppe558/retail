@@ -1,0 +1,57 @@
+{
+  "root": "apps/retail",
+  "sourceRoot": "apps/retail",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/retail",
+        "outputPath": "dist/apps/retail"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "retail:build",
+        "dev": true,
+        "port": 9229
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "retail:build:production",
+          "dev": false,
+          "port": 9229
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "retail:build:production",
+        "port": 9229
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/retail"],
+      "options": {
+        "jestConfig": "apps/retail/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/retail/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,28 @@
+{
+  "root": "apps/retail-e2e",
+  "sourceRoot": "apps/retail-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/retail-e2e/cypress.json",
+        "devServerTarget": "retail:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "retail:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/retail-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["retail"]
+}

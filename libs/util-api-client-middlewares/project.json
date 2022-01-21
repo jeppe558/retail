@@ -1,0 +1,23 @@
+{
+  "root": "libs/util-api-client-middlewares",
+  "sourceRoot": "libs/util-api-client-middlewares/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/util-api-client-middlewares/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/util-api-client-middlewares"],
+      "options": {
+        "jestConfig": "libs/util-api-client-middlewares/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
