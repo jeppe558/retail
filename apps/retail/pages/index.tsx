@@ -3,10 +3,11 @@ import { retailClient } from '../api/Client';
 import { InferGetServerSidePropsType } from "next"
 import { useLocalStorageAsState } from '../utils/useLocalStorageAsState';
 import QrReader from 'react-qr-scanner'
-import { Component } from 'react';
+import { Component, useState } from 'react';
 
 function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [basketItems, setBasketItems] = useLocalStorageAsState("basketItems", new Array<BasketItem>());
+  const [currentScan, setCurrentScan] = useState<string>();
 
   function addItemToBasket(itemId: string) {
     const clonedBasketItems = getClonedBasketItems();
@@ -60,10 +61,8 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
     }
   }
 
-  function handleScan(data){
-    this.setState({
-      result: data,
-    })
+  function handleScan(data: string){
+    setCurrentScan(data);
   }
   function handleError(err){
     console.error(err)
@@ -86,25 +85,19 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Brand</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Price</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map(item =>
               <TableRow
-                key={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.brandOrTitle}</TableCell>
-                <TableCell>{item.description}</TableCell>
-                <TableCell>{item.priceInHundreds}</TableCell>
+                key={item}>
+                <TableCell>{item}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
                     color="success"
-                    onClick={() => addItemToBasket(item.id)}
+                    onClick={() => addItemToBasket(item)}
                   >
                     Add one to basket
                   </Button>
@@ -149,11 +142,7 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
 }
 
 export async function getServerSideProps() {
-  const items = await retailClient().retailItemsGet({
-    body: {
-      itemIds: ["61dff088024ded729ba2d10c", "61dff089024ded729ba2d113", "61dff089024ded729ba2d11a", "61dff089024ded729ba2d121", "61dff089024ded729ba2d128", "61dff089024ded729ba2d12f"]
-    }
-  });
+  const items = ["61dff088024ded729ba2d10c", "61dff089024ded729ba2d113", "61dff089024ded729ba2d11a", "61dff089024ded729ba2d121", "61dff089024ded729ba2d128", "61dff089024ded729ba2d12f"];
   return { props: { items } };
 }
 
