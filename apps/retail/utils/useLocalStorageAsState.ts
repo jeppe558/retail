@@ -12,7 +12,7 @@ export function useLocalStorageAsState<Type>(key: string, defaultValue: Type): [
     return [value, setValue];
 };
 
-function getLocalStorageValue(key: string, defaultValue) {
+const getLocalStorageValue = (key: string, defaultValue) => {
   if (typeof window !== "undefined") {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
