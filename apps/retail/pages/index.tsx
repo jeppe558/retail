@@ -1,13 +1,17 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { retailClient } from '../api/Client';
-import { InferGetServerSidePropsType } from "next"
 import { useLocalStorageAsState } from '../utils/useLocalStorageAsState';
-import QrReader from 'react-qr-scanner'
 import { Component, useState } from 'react';
+import { QrReader } from '@blackbox-vision/react-qr-reader';
 
-function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export async function getStaticProps() {
+  const items = ["61dff088024ded729ba2d10c", "61dff089024ded729ba2d113", "61dff089024ded729ba2d11a", "61dff089024ded729ba2d121", "61dff089024ded729ba2d128", "61dff089024ded729ba2d12f"];
+  return { props: { items } };
+}
+
+export default function Index({ items }) {
   const [basketItems, setBasketItems] = useLocalStorageAsState("basketItems", new Array<BasketItem>());
-  const [currentScan, setCurrentScan] = useState<string>();
+  const [data, setData] = useState("Not Found");
 
   function addItemToBasket(itemId: string) {
     const clonedBasketItems = getClonedBasketItems();
@@ -25,7 +29,7 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
   function removeItemFromBasket(itemId: string) {
     const clonedBasketItems = getClonedBasketItems();
     const basketItemToModify = getItemFromBasket(itemId);
-    
+
     if (!basketItemToModify) {
       return;
     } else {
@@ -61,24 +65,20 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
     }
   }
 
-  function handleScan(data: string){
-    setCurrentScan(data);
-  }
-  function handleError(err){
-    console.error(err)
-  }
-
   return <>
+
     <Box>
-    {/* <QrReader
-          delay={100}
-          style={{
-            height: 240,
-            width: 320,
-          }}
-          onError={handleError}
-          onScan={handleScan}
-          /> */}
+      <Typography>{data}</Typography>
+    <QrReader
+        onResult={(result, error) => {
+          if (result) {
+            setData(result?.getText());
+          }
+
+          if (error) {
+            console.info(error);
+          }
+        } } constraints={undefined}      />
       <Typography variant='h4'>Available Items</Typography>
       <TableContainer>
         <Table>
@@ -141,9 +141,3 @@ function Index({ items }: InferGetServerSidePropsType<typeof getServerSideProps>
   </>
 }
 
-export async function getServerSideProps() {
-  const items = ["61dff088024ded729ba2d10c", "61dff089024ded729ba2d113", "61dff089024ded729ba2d11a", "61dff089024ded729ba2d121", "61dff089024ded729ba2d128", "61dff089024ded729ba2d12f"];
-  return { props: { items } };
-}
-
-export default Index;
