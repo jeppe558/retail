@@ -1,16 +1,18 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useLocalStorageAsState } from '../utils/useLocalStorageAsState';
 import { QrReader } from '@blackbox-vision/react-qr-reader';
+import { retailClient } from '../api/Client';
 
 export default function Index() {
   const [basketItems, setBasketItems] = useLocalStorageAsState("basketItems", new Array<BasketItem>());
 
-  const addItemToBasket = (itemId: string) => {
+  const addItemToBasket = async (itemId: string) => {
+    const item = await retailClient().retailItemGet(itemId);
     const clonedBasketItems = getClonedBasketItems();
     const basketItemToModify = getItemFromBasket(itemId);
 
     if (!basketItemToModify) {
-      clonedBasketItems.push(new BasketItem(itemId, 1));
+      clonedBasketItems.push(new BasketItem(item.id, item.brandOrTitle, item.description, item.priceInHundreds, 1, item.size, item.age));
     } else {
       basketItemToModify.count += 1;
     }
@@ -28,7 +30,7 @@ export default function Index() {
       if (basketItemToModify.count === 1) {
         // Remove item from basket
         clonedBasketItems.forEach((basketItem, index) => {
-          if (basketItem.itemId === itemId) {
+          if (basketItem.brandOrTitle === itemId) {
             clonedBasketItems.splice(index, 1);
           }
         });
@@ -44,7 +46,7 @@ export default function Index() {
   }
 
   const getItemFromBasket = (itemId: string) => {
-    return basketItems.find(basketItem => basketItem.itemId == itemId);
+    return basketItems.find(basketItem => basketItem.brandOrTitle == itemId);
   }
 
   const setItemFromQrCodeText = (itemUrl: string) => {
@@ -54,11 +56,28 @@ export default function Index() {
 
   class BasketItem {
     itemId: string;
+    brandOrTitle: string;
+    description: string;
+    priceInHundreds: number;
     count: number;
+    size?: string;
+    age?: string;
 
-    constructor(itemId: string, count: number) {
+    constructor(
+      itemId: string,
+      brandOrTitle: string,
+      description: string,
+      priceInHundreds: number,
+      count: number,
+      size?: string,
+      age?: string) {
       this.itemId = itemId;
+      this.brandOrTitle = brandOrTitle;
+      this.description = description;
+      this.priceInHundreds = priceInHundreds;
       this.count = count;
+      this.size = size;
+      this.age = age;
     }
   }
 
@@ -75,13 +94,15 @@ export default function Index() {
             console.info(error);
           }
         }} constraints={{ facingMode: "environment" }} />
-      <Typography variant='h4'>Items in Basket</Typography>
+      <Typography variant='h5'>Items in Basket</Typography>
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Count</TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
@@ -89,13 +110,15 @@ export default function Index() {
             {!!basketItems && basketItems.map(basketItem =>
               <TableRow
                 key={basketItem.itemId}>
-                <TableCell>{basketItem.itemId}</TableCell>
+                <TableCell>{`${basketItem.brandOrTitle} ${basketItem.description}`}</TableCell>
+                <TableCell>{basketItem.size ? `Str. ${basketItem.size}` : `${basketItem.description} år`}</TableCell>
+                <TableCell>{basketItem.priceInHundreds / 100 + " kr."}</TableCell>
                 <TableCell>{basketItem.count}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
                     color="error"
-                    onClick={() => removeItemFromBasket(basketItem.itemId)}
+                    onClick={() => removeItemFromBasket(basketItem.brandOrTitle)}
                   >
                     Remove one from basket
                   </Button>
