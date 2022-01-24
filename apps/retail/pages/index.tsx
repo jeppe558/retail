@@ -49,9 +49,9 @@ export default function Index() {
     return basketItems.find(basketItem => basketItem.brandOrTitle == itemId);
   }
 
-  const setItemFromQrCodeText = (itemUrl: string) => {
+  const setItemFromQrCodeText = async (itemUrl: string) => {
     const itemId = itemUrl.split("id-")[1];
-    addItemToBasket(itemId)
+    await addItemToBasket(itemId)
   }
 
   class BasketItem {
@@ -87,7 +87,7 @@ export default function Index() {
       <QrReader
         onResult={async (result, error) => {
           if (result) {
-            setItemFromQrCodeText(result?.getText());
+            await setItemFromQrCodeText(result?.getText());
           }
 
           if (error) {
