@@ -78,7 +78,7 @@ export default function Index({ items }) {
           if (error) {
             console.info(error);
           }
-        } } constraints={undefined}      />
+        } } constraints={{facingMode: "environment"}}      />
       <Typography variant='h4'>Available Items</Typography>
       <TableContainer>
         <Table>
